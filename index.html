@@ -1,5 +1,6 @@
 <html>
   <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <style>
       html, body {
         height: 100%;
@@ -15,9 +16,82 @@
         padding: 0;
         border: none;
       }
+
+      @font-face {
+        font-family: "Apple Garamond";
+        src: url("/apple_garamond/AppleGaramond.ttf") format("truetype");
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+      }
+
+      @keyframes fadeIn {
+        0% {
+          opacity: 0;
+          height: 100%;
+        }
+        100% {
+          opacity: .8;
+          height: 100%;
+        }
+      }
+
+      @keyframes fadeIn2 {
+        0% {
+          opacity: 0;
+          height: 100%;
+        }
+        100% {
+          opacity: 1;
+          height: 100%;
+        }
+      }
+
+      #overlay, #overlay-text {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 0%;
+        animation-duration: 2s;
+        animation-delay: 3s;
+        animation-iteration-count: 1;
+        animation-fill-mode: forwards;
+        opacity: 0;
+      }
+
+      #overlay {
+        background-color: black;
+        z-index: 1;
+        animation-name: fadeIn;
+      }
+
+      #overlay-text {
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: "Apple Garamond", serif;
+        font-size: 3em;
+        z-index: 2;
+        animation-name: fadeIn2;
+      }
     </style>
   </head>
   <body>
+    <div id="overlay-text">
+      Thank you for coming to this joke url. <br /> Click anywhere to continue to the real-life Alt Comedy Theater.
+    </div>
+    <div id="overlay">
+    </div>
     <iframe src="https://imposterstheater.com"></iframe>
+    <script>
+      setTimeout(() => {
+        document.querySelector('#overlay-text').addEventListener('click', () => {
+          window.location.href = 'https://imposterstheater.com';
+        });
+      }, 5000);
+    </script>
   </body>
 </html>
+
